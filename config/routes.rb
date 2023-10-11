@@ -23,8 +23,12 @@ Rails.application.routes.draw do
   #顧客
   scope module: :public do
     root to: 'homes#top'
-    get 'users/confirm' => 'users#confirm'
-    resources :users, only: [:show, :edit, :update] do
+    get 'users/mypage' => 'users#show'
+    get 'users/information/edit' => 'users#edit'
+    patch 'users/information' => 'users#update'
+    get 'users/confirm' => 'users#confirm'         #退会確認画面
+    patch 'users/withdrawal' => 'users#withdrawal' #退会処理更新
+    resources :users, only: [:edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'reltionships#followers', as: 'followers'
@@ -35,7 +39,7 @@ Rails.application.routes.draw do
       resources :bookmarks, only: [:index, :create, :destroy]
     end
     resources :tags, only: [:index]
-    get 'users/seach', to: 'searches#search'
+    get 'users/seach', to: 'searches#search'  #検索結果
   end
 
 end

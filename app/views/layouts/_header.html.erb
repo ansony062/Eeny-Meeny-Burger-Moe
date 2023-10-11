@@ -1,0 +1,102 @@
+<header>
+    <nav class="navbar navbar-expand-lg">
+      <div class="container p-3">
+        <!--ロゴ-->
+        <%= link_to root_path, class: 'brand-logo' do %>
+          <%= image_tag 'logo.png', size:"60x60" %>
+        <% end %>
+
+        <!--userログイン時、ようこそ○○さん！-->
+        <% if user_signed_in? %>
+          <div class="log-in-message">ようこそ、<%= current_user.nickname %>さん！</div>
+        <% else %>
+
+        <% end %>
+
+
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            <!--customerログイン時-->
+              <li>
+                <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                 My page
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                  投稿一覧
+                <% end %>
+                </li>
+
+              <li>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  Log out
+                <% end %>
+              </li>
+
+            <% elsif admin_signed_in? %>
+            <!--adminログイン時-->
+              <li>
+                <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+                  投稿一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                  会員一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
+                  タグ一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                  ログアウト
+                <% end %>
+              </li>
+
+            <% else %>
+            <!--未ログイン時-->
+              <li>
+                <%= link_to about_path, class: 'nav-link text-dark' do %>
+                  About
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                  投稿一覧
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                  Sign up
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                  Log in
+                <% end %>
+              </li>
+
+            <% end %>
+          </ul>
+        </div>
+
+      </div>
+    </nav>
+</header>
