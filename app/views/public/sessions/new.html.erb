@@ -6,6 +6,7 @@
       <h7>会員の方はこちらからログインしてください。</h7>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
           <table class="table table-borderless">
 
             <tr class="field">

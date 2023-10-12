@@ -13,7 +13,7 @@
               名&emsp;<%= f.text_field :first_name, placeholder: "一郎" %>
             </td>
           </tr>
-          
+
           <tr>
             <td>名前（カナ）</td>
             <td>
@@ -21,30 +21,30 @@
               メイ<%= f.text_field :first_name_kana, placeholder: "イチロウ" %>
             </td>
           </tr>
-          
+
           <tr>
             <td><%= f.label :nickname, "ニックネーム" %></td>
-            <td><%= f.text_field :nickname, placeholder: "だーやま" %></td>
+            <td>&emsp;&emsp;<%= f.text_field :nickname, placeholder: "だーやま" %></td>
           </tr>
-          
+
           <tr class="field">
             <td><%= f.label :email, "メールアドレス" %></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+            <td>&emsp;&emsp;<%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
           </tr>
 
           <tr class="field">
             <td>
               <%= f.label :password, "パスワード" %>
               <% if @minimum_password_length %>
-                <em>(<%= @minimum_password_length %> characters minimum)</em>
+                <em>(<%= @minimum_password_length %> 文字以上)</em>
               <% end %>
             </td>
-            <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+            <td>&emsp;&emsp;<%= f.password_field :password, autocomplete: "new-password" %></td>
           </tr>
 
           <tr class="field">
             <td><%= f.label :password_confirmation %></td>
-            <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+            <td>&emsp;&emsp;<%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
           </tr>
         </table>
 
@@ -52,7 +52,7 @@
           <%= f.submit "Sign up" %>
         </div>
       <% end %>
-      
+
       <div>
         <%= render "public/shared/links" %>
       </div>

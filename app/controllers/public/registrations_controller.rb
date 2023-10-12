@@ -59,14 +59,16 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-  protected
-  
-  def configure_sign_up_params
-    devise_paramerter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname])
-  end
-  
+
   def after_sign_up_path_for(resource)
     users_mypage_path
   end
-  
+
+
+  protected
+
+  def configure_sign_up_params
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:last_name, :first_name, :last_name_kana, :first_name_kana, :nickname])
+  end
+
 end
