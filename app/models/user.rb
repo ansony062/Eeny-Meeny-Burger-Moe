@@ -12,4 +12,9 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
+  
+  def active_for_authentication? #is_acttiveがfalseならtrueを返す
+    super && (is_active == false)
+  end
+  
 end
