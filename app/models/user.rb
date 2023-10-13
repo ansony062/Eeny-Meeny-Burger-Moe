@@ -13,6 +13,8 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
   
+
+  
   
   def self.guest
     find_or_create_by!(email: 'guest@example.com') do |user| #指定した条件で探して、存在すればそのデータを返し、存在しなければ新しいデータを作成する

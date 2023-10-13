@@ -3,7 +3,7 @@
     <div class="col-8">
       <h2>新規会員登録</h2>
 
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
         <table class="table table-borderless">
           <tr>
@@ -17,7 +17,7 @@
           <tr>
             <td>名前（カナ）</td>
             <td>
-              セイ<%= f.text_field :first_name_kana, placeholder: "ヤマダ" %>
+              セイ<%= f.text_field :last_name_kana, placeholder: "ヤマダ" %>
               メイ<%= f.text_field :first_name_kana, placeholder: "イチロウ" %>
             </td>
           </tr>
@@ -49,7 +49,7 @@
         </table>
 
         <div class="actions">
-          <%= f.submit "Sign up" %>
+          <%= f.submit "新規登録", class: "btn btn-primary" %>
         </div>
       <% end %>
 
