@@ -8,6 +8,7 @@ class CreatePosts < ActiveRecord::Migration[6.1]
       t.string :shop_name, null: false
       t.string :place,     null: false
       t.string :review,    null: false
+      t.text :body,        null: false
 
       t.timestamps
     end

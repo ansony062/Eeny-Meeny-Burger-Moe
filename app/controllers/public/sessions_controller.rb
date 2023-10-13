@@ -33,6 +33,13 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
   
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    flash[:notice] = "ゲストユーザーとしてログインしました。"
+    redirect_to root_path
+  end
+  
   
   
   def reject_user
