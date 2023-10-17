@@ -58,3 +58,13 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 
 gem 'kaminari','~> 1.2.1'
+
+
+gem 'dotenv-rails'
+ group :production do
+   gem 'mysql2'
+ end
+
+gem 'net-smtp'
+gem 'net-pop'
+gem 'net-imap'
