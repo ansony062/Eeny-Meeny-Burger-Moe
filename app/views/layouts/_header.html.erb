@@ -22,7 +22,7 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav ml-auto">
             <% if user_signed_in? %>
-            <!--customerログイン時-->
+            <!--userログイン時-->
               <li>
                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
                  My page
@@ -70,12 +70,6 @@
             <% else %>
             <!--未ログイン時-->
               <li>
-                <%= link_to about_path, class: 'nav-link text-dark' do %>
-                  About
-                <% end %>
-              </li>
-
-              <li>
                 <%= link_to posts_path, class: 'nav-link text-dark' do %>
                   投稿一覧
                 <% end %>
@@ -90,6 +84,12 @@
               <li>
                 <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
                   Log in
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+                  ゲストログイン
                 <% end %>
               </li>
 

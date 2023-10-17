@@ -1,5 +1,9 @@
 class Public::UsersController < ApplicationController
   
+  def show
+    @user = current_user
+  end
+  
   def withdrawal
     @user = User.find(current_user.id)
     @user.update(is_active: false) #is_activeをfalse(退会)に変更

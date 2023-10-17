@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <h4>マイページ</h4>
+    <div class="col-8">
+      <h3>登録情報</h3>
+      <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary" %>
+      <div>
+        <table class="table table-bordered">
+          <tr>
+            <td>名前</td>
+            <td><%= @user.last_name %></td>
+          </tr>
+
+          <tr>
+            <td>名前（カナ）</td>
+            <td><%= @user.last_name_kana %></td>
+          </tr>
+
+          <tr>
+            <td>ニックネーム</td>
+            <td><%= @user.nickname %></td>
+          </tr>
+
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= @user.email %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-4">
+      <h3>ブックマーク</h3>
+      <%#= link_to "一覧を見る", post_bookmarks_path, class: "btn btn-primary" %>
+    </div>
+  </div>
+</div>

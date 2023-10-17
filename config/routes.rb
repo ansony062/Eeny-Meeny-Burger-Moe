@@ -9,6 +9,12 @@ Rails.application.routes.draw do
     registrations: "public/registrations",
     sessions: "public/sessions"
   }
+
+  devise_scope :user do
+    get 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
+    get 'users/sign_out', to: 'public/sessions#sign_out'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   #管理者
