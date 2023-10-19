@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <h3>投稿詳細</h3>
+    <div class="col-8">
+      <div class="card-img-top">
+        <%= image_tag @post.get_image, size: "400x350", class: "card-img-top", style: "object-fit: cover;" %>
+      </div>
+      <table class="table table-borderless">
+        <tr>
+          <td>商品名（タイトル）</td>
+          <td><%= @post.name</td>
+        </tr>
+
+        <tr>
+          <td>店舗名</td>
+          <td><%= @post.shop_name %></td>
+        </tr>
+
+        <tr>
+          <td>場所</td>
+          <td><%= @post.place %></td>
+        </tr>
+
+        <tr>
+          <td>オススメ度</td>
+          <td><%= @post.review %></td>
+        </tr>
+
+        <tr>
+          <td>感想レビュー</td>
+          <td><%= @post.body %></td>
+        </tr>
+
+        <tr>
+          <td>公開設定</td>
+          <td>
+            <% if @post.is_active %>
+              <span class="text-success">公開</span>
+            <% else %>
+              <span class="text-secondary">非公開</span>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr>
+          <td></td>
+          <td><%= link_to "編集する", edit_admin_post_path(@post), class: "btn" %></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

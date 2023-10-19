@@ -12,8 +12,15 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_relationships, source: :follower
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
   has_many :followings, through: :relationships, source: :followed
-
-
+  
+  
+  def full_name
+    last_name + ' ' + first_name
+  end
+  
+  def full_name_kana
+    last_name_kana + ' ' + first_name_kana
+  end
 
 
   def self.guest

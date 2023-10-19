@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <h3>投稿一覧</h3>
+    
+    <div class="col-8">
+      <table class="table table-hover">
+        <thread>
+          <tr>
+            <th>投稿日時</th>
+            <th>投稿者</th>
+            <th></th>
+            <th>商品名（タイトル）</th>
+            <th>投稿状況</th>              <!-- 余裕があれば実装 -->
+          </tr>
+        </thread>
+        <tbody>
+          <% @posts.each do |post| %>
+            <tr>
+              <td>
+                <%= link_to admin_post_path(post.id) do %>
+                  <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
+                <% end %>
+              </td>
+              <td><%= post.user.last_name + post.user.first_name %></td>
+              <td><%= image_tag post.image, size: "100x70", style: "object-fit: cover;" %></td>
+              <td><%= post.name %></td>
+              <td></td>                    <!-- 余裕があれば実装 -->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%=paginate @posts %>
+    </div>
+  </div>
+</div>
+
