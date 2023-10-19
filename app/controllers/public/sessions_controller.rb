@@ -33,8 +33,6 @@ class Public::SessionsController < Devise::SessionsController
     root_path
   end
 
-  def sign_out
-  end
 
   def guest_sign_in
     user = User.guest
