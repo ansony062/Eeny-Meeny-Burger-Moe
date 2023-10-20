@@ -1,11 +1,11 @@
 <div class="container">
   <div class="row">
-    <h4>マイページ</h4>
-    <div class="col-8">
-      <h3>登録情報</h3>
+    <h3>マイページ</h3>
+    <div class="col-5">
+      <h4>登録情報</h4>
       <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary" %>
       <div>
-        <table class="table table-bordered">
+        <table class="table table-borderless">
           <tr>
             <td>名前</td>
             <td><%= @user.full_name %></td>
@@ -31,8 +31,12 @@
   </div>
 
   <div class="row">
+    <div class="co-4">
+      <h4><i class="fa-regular fa-user"></i>投稿マイページ</h4>
+      <%#= link_to "一覧マイページを見る",_path, class: "btn btn-primary" %>
+    </div>
     <div class="col-4">
-      <h3>ブックマーク</h3>
+      <h4><i class="fa-solid fa-bookmark"></i>ブックマーク</h4>
       <%#= link_to "一覧を見る", post_bookmarks_path, class: "btn btn-primary" %>
     </div>
   </div>
