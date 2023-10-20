@@ -1,3 +1,3 @@
 class Public::CommentsController < ApplicationController
-  before_action :authenticate_customer!
+  before_action :authenticate_user!
 end

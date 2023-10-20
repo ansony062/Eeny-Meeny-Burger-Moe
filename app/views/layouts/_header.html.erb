@@ -25,19 +25,19 @@
             <!--userログイン時-->
               <li>
                 <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
-                 My page
+                 <i class="fa-solid fa-user"></i>My page
                 <% end %>
               </li>
 
               <li>
                 <%= link_to posts_path, class: 'nav-link text-dark' do %>
-                  投稿一覧
+                  <i class="fa-solid fa-book"></i>Posts
                 <% end %>
                 </li>
 
               <li>
                 <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  Log out
+                  <i class="fa-solid fa-right-from-bracket"></i>Log Out
                 <% end %>
               </li>
 
@@ -45,25 +45,25 @@
             <!--adminログイン時-->
               <li>
                 <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
-                  投稿一覧
+                  <i class="fa-solid fa-book"></i>Posts
                 <% end %>
               </li>
 
               <li>
                 <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
-                  会員一覧
+                  <i class="fa-solid fa-users"></i>Users
                 <% end %>
               </li>
 
               <li>
                 <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
-                  タグ一覧
+                  <i class="fa-solid fa-tags"></i>Tags
                 <% end %>
               </li>
 
               <li>
                 <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
-                  ログアウト
+                  <i class="fa-solid fa-right-from-bracket"></i>Sign Out
                 <% end %>
               </li>
 
@@ -71,25 +71,25 @@
             <!--未ログイン時-->
               <li>
                 <%= link_to posts_path, class: 'nav-link text-dark' do %>
-                  投稿一覧
+                  <i class="fa-solid fa-book"></i>Posts
                 <% end %>
               </li>
 
               <li>
                 <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
-                  Sign up
+                  <i class="fa-solid fa-user-plus"></i>Sign Up
                 <% end %>
               </li>
 
               <li>
                 <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
-                  Log in
+                  <i class="fa-solid fa-right-to-bracket"></i>Log In
                 <% end %>
               </li>
 
               <li>
                 <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
-                  ゲストログイン
+                  <i class="fa-solid fa-user-group"></i>Guest Log In
                 <% end %>
               </li>
 
