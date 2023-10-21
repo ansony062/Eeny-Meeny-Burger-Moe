@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <h4>新規投稿フォーム</h4>
+    <div class="col-8">
+      <%= render 'layouts/errors', obj: @post %>
+      <%= form_with model: @post, url: posts_path do |f| %>
+        
+        <%= f.file_field :image, accept: "image/*" %>
+        
+        <table class="table table-borderless">
+          
+          <tr>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      
+      <% end %>
+    </div>
+  </div>
+</div>

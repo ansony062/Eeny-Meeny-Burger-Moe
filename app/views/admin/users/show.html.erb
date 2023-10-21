@@ -2,6 +2,7 @@
   <div class="row">
     <h4><%= @user.full_name %>さんの会員詳細</h4>
     <div class="col-8">
+      <p><%= image_tag @user.get_profile_image(50, 50), class: "rounded-circle" %></p>
       <table class="table table-borderless">
         <tr>
           <td>会員ID</td>
