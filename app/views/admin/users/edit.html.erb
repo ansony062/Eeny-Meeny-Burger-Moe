@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <h3><%= @user.full_name %>さんの会員情報編集</h3>
+    <div class="col-8">
+      <%= render 'layouts/errors', obj: @user %>
+      <%= form_with model: @user, url: admin_user_path do |f| %>
+　     <table class="table table-borderless">
+　       
+          <tr>
+            <td>会員ID</td>
+            <td><%= @user.id %></td>
+          </tr>
+
+          <tr>
+            <td>氏名</td>
+            <td><%= f.text_field :last_name %>&emsp;<%= f.text_field :first_name %></td>
+          </tr>
+
+          <tr>
+            <td>氏名（カナ）</td>
+            <td><%= f.text_field :last_name_kana %>&emsp;<%= f.text_field :first_name_kana %></td>
+          </tr>
+
+          <tr>
+            <td>ハンドルネーム</td>
+            <td><%= f.text_field :nickname %></td>
+          </tr>
+
+          <tr>
+            <td>メールアドレス</td>
+            <td><%= f.text_field :email %></td>
+          </tr>
+
+          <tr>
+            <td>会員ステータス</td>
+            <td>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active_true, "有効" %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active_false, "退会" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+          </tr>
+
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,7 @@
       <h7>会員の方はこちらからログインしてください。</h7>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= render "public/shared/error_messages", resource: resource %>
+          <%= render "public/shared/error_messages", resource: resource %>
           <table class="table table-borderless">
 
             <tr class="field">
@@ -29,12 +29,12 @@
                 </td>
               </tr>
             <% end %>
+          </table>
 
-            <tr class="actions">
-              <td><%= f.submit "ログイン", class: "btn btn-primary" %></td>
-            </tr>
-          <% end %>
-        </table>
+          <div class="actions">
+            <%= f.submit "ログイン", class: "btn btn-primary" %>
+          </div>
+        <% end %>
 
         <div>
           <%= render "public/shared/links" %>
