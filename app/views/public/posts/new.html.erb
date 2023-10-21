@@ -10,8 +10,43 @@
         <table class="table table-borderless">
           
           <tr>
+            <td>画像</td>
+            <td><%= f.file_field :image, accept: "image/*" </td>
+          </tr>
+          
+          <tr>
+            <td>商品名（タイトル）</td>
+            <td><%= f.text_field :name, :placeholder => "〇〇バーガー" %></td>
+          </tr>
+          
+          <tr>
+            <td><i class="fa-regular fa-store"></i>店舗名</td>
+            <td><%= f.text_field :shop_name, :placeholder => "〇〇バーガーショップ" %></td>
+          </tr>
+          
+          <tr>
+            <td><i class="fa-regular fa-location-dot"></i>場所</td>
+            <td><%= f.text_field :place, :placeholder => "最寄り駅〇〇駅" %></td>
+          </tr>
+          
+          <tr>
+            <td>オススメ度</td>
             <td></td>
+          </tr>
+          
+          <tr>
+            <td>感想・レビュー</td>
+            <td><%= f.text_field :body, :placeholder => "ここに感想・レビューを記入してください。" %></td>
+          </tr>
+          
+          <tr>
+            <td>タグ</td>
             <td></td>
+          </tr>
+          
+          <tr>
+            <td></td>
+            <td><%= f.submit '新規投稿', class: "btn btn-primary" %></td>
           </tr>
         </table>
       
