@@ -1,14 +1,25 @@
 <div class="container">
   <div class ="row">
     <h3>投稿一覧</h3>
-    <div class="col-8">
-      <% @posts.each do |post| %>
-        <%= link_to post_path(post.id) do %>
-          <%= image_tag item.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
-          <h6 class="card-title"><%= post.name %></h6>
-          <p class="card-text"><%= post.shop_name %></p>
-        <% end %>
-      <% end %>
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <div class="col-8">
+          <% @posts.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag item.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
+              <h6 class="card-title"><%= post.name %></h6>
+              <p class="card-text">
+                <i class="fa-solid fa-shop"></i><%= post.shop_name %><br />
+                <%= post.body %>
+              </p>
+              <span class="text-left">
+                <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
     </div>
+    <%= paginate @posts %>
   </div>
 </div>

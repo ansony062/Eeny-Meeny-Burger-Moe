@@ -1,11 +1,13 @@
 class Public::PostsController < ApplicationController
   
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(12)
+    @tag = Tag.all
   end
   
   def show
     @post = Post.find(params[:id])
+    @tag = Tag.all
   end
   
   def new
