@@ -3,18 +3,18 @@ class Public::UsersController < ApplicationController
   before_action :ensure_correct_user, only: [:edit, :update]
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def update
-    @user = current_user
+    @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "会員情報を変更しました。"
-      redirect_to users_mypage_path
+      redirect_to user_path
     else
       flash.now[:notice] = "会員情報の変更できませんでした。"
       render 'edit'

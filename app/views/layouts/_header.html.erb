@@ -24,7 +24,7 @@
             <% if user_signed_in? %>
             <!--userログイン時-->
               <li>
-                <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                <%= link_to user_path(current_user.id), class: 'nav-link text-dark' do %>
                  <i class="fa-solid fa-user"></i>My page
                 <% end %>
               </li>

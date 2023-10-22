@@ -3,7 +3,7 @@
     <h3>マイページ</h3>
     <div class="col-5">
       <h4>登録情報</h4>
-      <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary" %>
+      <%= link_to "編集する", edit_user_path, class: "btn btn-primary" %>
       <div>
         <p><%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle" %></p>
         <table class="table table-borderless">

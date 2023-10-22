@@ -29,12 +29,12 @@ Rails.application.routes.draw do
   #顧客
   scope module: :public do
     root to: 'homes#top'
-    get 'users/mypage' => 'users#show'
-    get 'users/information/edit' => 'users#edit'
-    patch 'users/information' => 'users#update'
+    # get 'users/mypage' => 'users#show'
+    # get 'users/information/:id/edit' => 'users#edit'
+    # patch 'users/information' => 'users#update'
     get 'users/confirm' => 'users#confirm'         #退会確認画面
     patch 'users/withdrawal' => 'users#withdrawal' #退会処理更新
-    resources :users, only: [:edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'reltionships#followers', as: 'followers'

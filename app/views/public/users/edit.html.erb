@@ -3,7 +3,7 @@
     <h3><%= @user.full_name %>さんの会員情報編集</h3>
     <div class="col-8">
       <%= render 'layouts/errors', obj: @user %>
-      <%= form_with model: @user, url: users_information_path, method: :patch do |f| %>
+      <%= form_with model: @user, url: user_path, method: :patch do |f| %>
         <table class="table table-borderless">
 
           <TR><%= f.file_field :profile_image, placeholder: "プロフィール画像", accept: "image/*" %></TR>
@@ -31,7 +31,7 @@
           <tr>
             <td></td>
             <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
-            <td><%= link_to "退会する", user_confirm_path, class: "btn btn-danger" %></td>
+            <td><%= link_to "退会する", users_confirm_path, class: "btn btn-danger" %></td>
           </tr>
 
         </table>
