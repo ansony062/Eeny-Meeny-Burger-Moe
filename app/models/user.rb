@@ -43,20 +43,20 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'default-image.jpg', content_type: 'image/jpeg')
     end
-    # profile_image.variant(risize_to_limit: [wigth, height]).processed
+    profile_image.variant(resize_to_limit: [wigth, height]).processed
   end
-  
-  
+
+
   #指定したユーザーをフォローする
   def follow(user)
     relationships.create(followed_id: user.id)
   end
-  
+
   #指定したユーザーのフォローを解除
   def unfollow(user)
     relationships.find_by(followed_id: user.id).destroy
   end
-  
+
   #指定したユーザーをフォローしているか？
   def following?(user)
     followings.include?(user)
