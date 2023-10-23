@@ -6,12 +6,16 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def mypage
+    @user = current_user
+  end
+
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
     if @user.update(user_params)
       flash[:notice] = "会員情報を変更しました。"
       redirect_to user_path

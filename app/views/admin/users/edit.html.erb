@@ -5,11 +5,6 @@
       <%= render 'layouts/errors', obj: @user %>
       <%= form_with model: @user, url: admin_user_path do |f| %>
 　     <table class="table table-borderless">
-　       
-          <tr>
-            <td>会員ID</td>
-            <td><%= @user.id %></td>
-          </tr>
 
           <tr>
             <td>氏名</td>

@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <h3>投稿詳細</h3>
+
+    <div class="col-8">
+      <div>
+        <%= image_tag @post.get_image, size: "500x350", class: "post-image", style: "object-fit: cover;" %>
+      </div>
+      <table class="table table-borderless">
+        <tr>
+          <td>商品名（タイトル）：<%= @post.name %></td>
+          <td>店舗名：<%= @post.shop_name %></td>
+          <td>場所：<%= @post.place %></td>
+          <td>オススメ度<%= render 'startic', post: @post %></td>
+          <td>感想・レビュー：<%= @post.body %></td>
+          <td>タグ：</td>
+          <% if @post.user == current_user %>
+            <td><%= link_to "編集する", edit_post_path, class: "btn btn-success" %></td>
+            <td><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></td>
+          <% end %>
+        </tr>
+      </table>
+      <div id="post_<%= @post.id %>">
+        <ul>
+          <li class="favorite-love"><%= render 'favorites/love', post: @post %></li>
+          <li><%#= render 'bookmarks/', %></li>
+        </ul>
+      </div>
+      <div class="comment-index">
+        <%= render 'comments/index', post: @post %>
+      </div>
+      <%= render 'comments/form', post: @post, comment: @comment %>
+    </div>
+
+    <div class="sidebar col-4">
+      <%#= render '検索バー' %>
+      <%#= render 'タグ一覧' %>
+    </div>
+
+  </div>
+</div>

@@ -1,44 +1,45 @@
 <div class="container">
+
   <div class="row">
-    <h3>マイページ</h3>
+    <h3><%= @user.nickname %>さんの投稿ページ</h3>
     <div class="col-5">
-      <h4>登録情報</h4>
-      <%= link_to "編集する", edit_user_path, class: "btn btn-primary" %>
-      <div>
-        <p><%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle" %></p>
-        <table class="table table-borderless">
-          <tr>
-            <td>名前</td>
-            <td><%= @user.full_name %></td>
-          </tr>
-
-          <tr>
-            <td>名前（カナ）</td>
-            <td><%= @user.full_name_kana %></td>
-          </tr>
-
-          <tr>
-            <td>ハンドルネーム</td>
-            <td><%= @user.nickname %></td>
-          </tr>
-
-          <tr>
-            <td>メールアドレス</td>
-            <td><%= @user.email %></td>
-          </tr>
-        </table>
+      <table class="table">
+        <tr>
+          <th><%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle" %></th>
+          <th><%= @user.nickname %></th>
+          <th>
+            <% if @user == current_user %>
+              <%= link_to "登録情報へ", users_mypage_path %>
+            <% end %>
+          </th>
+        </tr>
+        <tr>
+          <th>フォロー数：<%= link_to @user.followings.count, user_followings_path(@user) %></th>
+          <th>フォロワー数：<%= link_to @user.followers.count, user_followers_path(@user) %></th>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row">
+    <div class="card shadow-lg">
+      <div class="card-body">
+        <div class="col-8">
+          <% @users.posts.each do |post| %>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
+              <h6 class="card-title"><%= post.name %></h6>
+              <p class="card-text">
+                <i class="fa-solid fa-shop"></i><%= post.shop_name %><br />
+                <%= post.body %>
+              </p>
+              <span class="text-left">
+                <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
+              </span>
+            <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="row">
-    <div class="co-4">
-      <h4><i class="fa-regular fa-user"></i>投稿マイページ</h4>
-      <%#= link_to "一覧マイページを見る",_path, class: "btn btn-primary" %>
-    </div>
-    <div class="col-4">
-      <h4><i class="fa-solid fa-bookmark"></i>ブックマーク</h4>
-      <%#= link_to "一覧を見る", post_bookmarks_path, class: "btn btn-primary" %>
-    </div>
-  </div>
 </div>
