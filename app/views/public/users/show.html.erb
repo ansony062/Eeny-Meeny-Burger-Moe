@@ -24,7 +24,7 @@
     <div class="card shadow-lg">
       <div class="card-body">
         <div class="col-8">
-          <% @users.posts.each do |post| %>
+          <% @user.posts.each do |post| %>
             <%= link_to post_path(post.id) do %>
               <%= image_tag post.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
               <h6 class="card-title"><%= post.name %></h6>

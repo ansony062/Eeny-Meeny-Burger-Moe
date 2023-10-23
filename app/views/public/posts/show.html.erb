@@ -1,35 +1,50 @@
 <div class="container">
   <div class="row">
     <h3>投稿詳細</h3>
+  </div>
 
-    <div class="col-8">
-      <div>
+    <div class="row ps-3">
         <%= image_tag @post.get_image, size: "500x350", class: "post-image", style: "object-fit: cover;" %>
-      </div>
+    <div class="col-8 p-3">
       <table class="table table-borderless">
         <tr>
           <td>商品名（タイトル）：<%= @post.name %></td>
+        </tr>
+        <tr>
           <td>店舗名：<%= @post.shop_name %></td>
+        </tr>
+        <tr>
           <td>場所：<%= @post.place %></td>
+        </tr>
           <td>オススメ度<%= render 'startic', post: @post %></td>
+        </tr>
+        <tr>
           <td>感想・レビュー：<%= @post.body %></td>
+        </tr>
+        <tr>
           <td>タグ：</td>
-          <% if @post.user == current_user %>
-            <td><%= link_to "編集する", edit_post_path, class: "btn btn-success" %></td>
-            <td><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></td>
-          <% end %>
+        </tr>
+        <tr>
+          <td>
+            <%= image_tag @post.user.get_profile_image(50, 50), class: "rounded-circle" %>
+            <%= @post.user.nickname %>
+          </td>
         </tr>
       </table>
       <div id="post_<%= @post.id %>">
-        <ul>
-          <li class="favorite-love"><%= render 'favorites/love', post: @post %></li>
+        <ul class="navbar", style="list-style: none;">
+          <% if @post.user == current_user %>
+              <li><%= link_to "編集する", edit_post_path, class: "btn btn-success" %></li>
+              <li><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></li>
+          <% end %>
+          <li class="favorite-love"><%= render 'public/favorites/love', post: @post %></li>
           <li><%#= render 'bookmarks/', %></li>
         </ul>
       </div>
       <div class="comment-index">
-        <%= render 'comments/index', post: @post %>
+        <%= render 'public/comments/index', post: @post %>
       </div>
-      <%= render 'comments/form', post: @post, comment: @comment %>
+      <%= render 'public/comments/form', post: @post, comment: @comment %>
     </div>
 
     <div class="sidebar col-4">

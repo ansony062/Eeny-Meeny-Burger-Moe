@@ -1,23 +1,24 @@
 class Public::PostsController < ApplicationController
-  
+
   def index
     @posts = Post.page(params[:page]).per(12)
-    @tag = Tag.all
+    @tags = Tag.all
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @tag = Tag.all
     @comment = Comment.new
   end
-  
+
   def new
     @post = Post.new
     @tags = Tag.all
   end
-  
+
   def create
     @post = Post.new(post_params)
+    @post.user_id = current_user.id
     if @post.save
       flash[:notice] = "投稿しました！"
       redirect_to posts_path
@@ -26,11 +27,11 @@ class Public::PostsController < ApplicationController
       render 'new'
     end
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)

@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2023_10_20_182730) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id", "post_id"], name: "index_bookmarks_on_user_id_and_post_id", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
@@ -79,18 +80,18 @@ ActiveRecord::Schema.define(version: 2023_10_20_182730) do
     t.integer "tag_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id", "tag_id"], name: "index_post_tags_on_post_id_and_tag_id", unique: true
   end
 
   create_table "posts", force: :cascade do |t|
     t.integer "user_id", null: false
-    t.integer "image_id", null: false
     t.string "name", null: false
     t.string "shop_name", null: false
     t.string "place", null: false
     t.string "review", null: false
+    t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.text "body", null: false
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -104,6 +105,7 @@ ActiveRecord::Schema.define(version: 2023_10_20_182730) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

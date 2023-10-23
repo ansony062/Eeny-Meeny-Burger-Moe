@@ -4,7 +4,7 @@
     <%= post.favorites.count %>
   <% end %>
 <% else %>
-  <%= link_to post_favorites_path(post), method: :delete, remote: true do %>
+  <%= link_to post_favorites_path(post), method: :post, remote: true do %>
     <i class= "fa-regular fa-heart" aria-hidden = "true"></i>
     <%= post.favorites.count %>
   <% end %>

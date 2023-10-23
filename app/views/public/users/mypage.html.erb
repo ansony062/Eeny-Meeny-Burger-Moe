@@ -33,7 +33,7 @@
   <div class="row">
     <div class="co-4">
       <h4><i class="fa-regular fa-user"></i>投稿マイページ</h4>
-      <%= link_to "一覧マイページを見る",user_path, class: "btn btn-primary" %>
+      <%= link_to "一覧マイページを見る", user_path(@user.id), class: "btn btn-primary" %>
     </div>
     <div class="col-4">
       <h4><i class="fa-solid fa-bookmark"></i>ブックマーク</h4>

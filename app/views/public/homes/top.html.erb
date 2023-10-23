@@ -12,29 +12,40 @@
       </div>
 
       <div class ="row">
-          <div class="col-8">
-            <h4>投稿一覧</h4>
-            <% @posts.each do |post| %>
-              <%= link_to post_path(post.id) do %>
-                <%= image_tag item.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
-                <h6 class="card-title"><%= post.name %></h6>
-                <p class="card-text"><%= post.shop_name %></p>
+        <div class="card shadow">
+          <div class="card-body">
+            <div class="col-8">
+              <% @posts.each do |post| %>
+                <%= link_to post_path(post.id) do %>
+                  <%= image_tag post.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
+                  <h6 class="card-title"><%= post.name %></h6>
+                  <p class="card-text">
+                    <i class="fa-solid fa-shop"></i><%= post.shop_name %><br />
+                    <%= post.body %>
+                  </p>
+                  <p><i class="fa-solid fa-comment"></i><%= post.comments.count %></p>
+                  <span class="text-left">
+                    <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
+                  </span>
+                <% end %>
               <% end %>
-            <% end %>
-            <div>
-              <%= link_to "さらに表示する", posts_path %>
+              <div>
+                <%= link_to "さらに表示する", posts_path %>
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="sidebar col-4">
-            <div>
-              <%= link_to new_post_path do %>
-                <i class="fa-regular fa-circle-plus"></i>
-              <% end %>
-            </div>
-              <%#= render 検索バー %>
-              <%#= render タグ検索バー %>
-          </div>
+        <div class="sidebar col-3">
+          <h4>
+            <%= link_to new_post_path do %>
+              <i class="fa-solid fa-circle-plus"></i>NewPost!
+            <% end %>
+          </h4>
+            <%#= render 検索バー %>
+            <%#= render タグ検索バー %>
+        </div>
       </div>
+
   </div>
 </main>
