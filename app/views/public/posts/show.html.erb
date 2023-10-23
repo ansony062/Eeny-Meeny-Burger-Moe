@@ -38,7 +38,7 @@
               <li><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></li>
           <% end %>
           <li class="favorite-love"><%= render 'public/favorites/love', post: @post %></li>
-          <li><%#= render 'bookmarks/', %></li>
+          <li class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></li>
         </ul>
       </div>
       <div class="comment-index">

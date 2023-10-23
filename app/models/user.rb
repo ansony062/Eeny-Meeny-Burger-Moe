@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :posts,     dependent: :destroy
   has_many :bookmarks, dependent: :destroy
+  has_many :bookmark_posts, through: :bookmarks, source: :post
   has_many :comments,  dependent: :destroy
   has_many :favorites, dependent: :destroy
 
@@ -61,6 +62,22 @@ class User < ApplicationRecord
   #指定したユーザーをフォローしているか？
   def following?(user)
     followings.include?(user)
+  end
+
+
+  #ブックマークに追加
+  def bookmark(post)
+    bookmark_posts << post
+  end
+
+  #ブックマークを外す
+  def unbookmark(post)
+    bookmark_posts.destroy(post)
+  end
+
+  #ブックマークしているか？
+  def bookmark?(post)
+    bookmark_posts.include?(post)
   end
 
 

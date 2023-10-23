@@ -23,4 +23,10 @@ class Post < ApplicationRecord
     favorites.exists?(user_id: user.id)
   end
 
+  #現在サインインしているユーザーがお気に入り登録しているかどうか判断するためのメソッドです。
+  #find_byでend_user_idとend_user.idが一致するbookmarksを探し、なければnilを返します。
+  def find_bookmark(user)
+    bookmarks.find_by(user_id: user.id)
+  end
+
 end
