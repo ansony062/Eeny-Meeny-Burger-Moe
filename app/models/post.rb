@@ -19,6 +19,24 @@ class Post < ApplicationRecord
     image
   end
 
+  def save_tags(tags)
+    current_tags = self.tags.pluck(:name) unless self.tags.nil?  #タグが存在してれば、名前を配列としてすべて取得
+    old_tags = current_tags - tags                               #現在取得したタグから送られてきたタグを除いてoldtagとする
+    new_tags = tags - current_tags                               #送られてきたタグから現在存在するタグを覗いてnewtagとする
+
+    #古いタグを消す
+    old_tags.each do |old_name|
+      self.tags.delete Tag.find_by(name:old_name)
+    end
+
+    #新しいタグを保存
+    new_tags.each do |new_name|
+      tag = Tag.find_or_create_by(name:new_name)
+      self.tags << tag
+    end
+
+  end
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

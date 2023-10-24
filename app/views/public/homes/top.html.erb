@@ -12,10 +12,10 @@
       </div>
 
       <div class ="row">
-        <div class="card shadow">
-          <div class="card-body">
-            <div class="col-8">
-              <% @posts.each do |post| %>
+        <% @posts.each do |post| %>
+          <div class="card shadow m-2">
+            <div class="card-body">
+              <div class="col-8">
                 <%= link_to post_path(post.id) do %>
                   <%= image_tag post.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
                   <h6 class="card-title"><%= post.name %></h6>
@@ -28,10 +28,10 @@
                     <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
                   </span>
                 <% end %>
-              <% end %>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
          <div>
           <%= link_to "さらに表示する", posts_path %>
         </div>

@@ -23,6 +23,13 @@
         </tr>
         <tr>
           <td>タグ：</td>
+          <td>
+            <% @post_tags.each do |tag| %>
+              <%= link_to tag_path(tag_id: tag.id) do %>
+                <i class="fa-solid fa-tag"></i><%= tag.name %>
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>

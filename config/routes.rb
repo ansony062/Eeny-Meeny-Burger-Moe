@@ -44,7 +44,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
       resources :bookmarks, only: [:index, :create, :destroy]
     end
-    resources :tags, only: [:index, :new, :create, :edit, :update]
+    resources :tags, only: [:show, :new, :create, :edit, :update]
     get 'users/seach', to: 'searches#search'  #検索結果
   end
 

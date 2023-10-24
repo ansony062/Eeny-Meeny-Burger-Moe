@@ -1,0 +1,14 @@
+<table class="table trable-borderless">
+  <tr class="text-center">
+    <th>Tag</th>
+  </tr>
+  <% tags.each do |tag| %>
+    <tr>
+      <td>
+        <%= link_to tag_path(tag.id) do %>
+          <i class="fa-solid fa-tag"></i><%= tag.name %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
