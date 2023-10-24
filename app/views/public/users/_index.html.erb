@@ -9,10 +9,10 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= image_tag user.get_profile_image, size: "100x100", class: "rounded-circle" %></td>
+        <td><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></td>
         <td><%= user.nickname %></td>
-        <td><%= render 'relationships/btn', user: user, options: {class: "follow-link"} %></td>
-        <td><%= link_to "投稿ページへ", user_path, class: "btn btn-primary" %></td>
+        <td><%= render 'public/relationships/btn', user: user, options: {class: "follow-link"} %></td>
+        <td><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary" %></td>
       </tr>
     <% end %>
   </tbody>

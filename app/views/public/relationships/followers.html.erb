@@ -2,8 +2,8 @@
   <div class="row">
     <h3>Follower Users</h3>
     <div class="col-8">
-      <% if @users.exits? %>
-        <%= render "/users/index", users: @users %>
+      <% if @users.exists? %>
+        <%= render "public/users/index", users: @users %>
       <% else %>
         <p>ユーザーはいません。</p>
       <% end %>

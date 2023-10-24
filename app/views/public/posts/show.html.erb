@@ -26,25 +26,29 @@
         </tr>
         <tr>
           <td>
-            <%= image_tag @post.user.get_profile_image(50, 50), class: "rounded-circle" %>
-            <%= @post.user.nickname %>
+            <%= link_to user_path(@post.user_id) do %>
+              <%= image_tag @post.user.get_profile_image(50, 50), class: "rounded-circle" %>
+              <%= @post.user.nickname %>
+            <% end %>
           </td>
         </tr>
       </table>
-      <div id="post_<%= @post.id %>">
-        <ul class="navbar", style="list-style: none;">
-          <% if @post.user == current_user %>
+      <% if user_signed_in? %>
+        <div id="post_<%= @post.id %>">
+          <ul class="navbar", style="list-style: none;">
+            <% if @post.user == current_user %>
               <li><%= link_to "編集する", edit_post_path, class: "btn btn-success" %></li>
               <li><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></li>
-          <% end %>
-          <li class="favorite-love"><%= render 'public/favorites/love', post: @post %></li>
-          <li class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></li>
-        </ul>
-      </div>
-      <div class="comment-index">
-        <%= render 'public/comments/index', post: @post %>
-      </div>
-      <%= render 'public/comments/form', post: @post, comment: @comment %>
+            <% end %>
+            <li class="favorite-love"><%= render 'public/favorites/love', post: @post %></li>
+            <li class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></li>
+          </ul>
+        </div>
+        <div class="comment-index">
+          <%= render 'public/comments/index', post: @post %>
+        </div>
+        <%= render 'public/comments/form', post: @post, comment: @comment %>
+      <% end %>
     </div>
 
     <div class="sidebar col-4">
