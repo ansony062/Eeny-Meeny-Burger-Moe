@@ -1,0 +1,7 @@
+<% if @keyword == 'user' %>
+  <%= render 'public/users/index', users: @records %>
+<% elsif @keyword == 'post' %>
+  <%= render '', posts: @records %>
+<% elsif @keyword == 'tag' %>
+  <%= render '', tags: @records %>
+<% end %>

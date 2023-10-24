@@ -79,6 +79,11 @@ class User < ApplicationRecord
   def bookmark?(post)
     bookmark_posts.include?(post)
   end
+  
+  def self.search_for(keyword)
+    if User.where('nickname LIKE ?', '%#{keyword}%')
+    end
+  end
 
 
 end

@@ -23,12 +23,12 @@
     <%= paginate @posts %>
 
     <div class="sidebar col-3">
-      <h4>
+      <h5>
         <%= link_to new_post_path do %>
           <i class="fa-solid fa-circle-plus"></i>NewPost!
         <% end %>
-      </h4>
-      <%#= render '検索バー' %>
+      </h5>
+      <%= render 'public/searches/form' %>
       <%= render 'public/tags/sidetag', tags: @tags %>
     </div>
   </div>

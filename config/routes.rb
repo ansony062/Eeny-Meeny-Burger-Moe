@@ -46,7 +46,7 @@ Rails.application.routes.draw do
       resource :bookmarks, only: [:create, :destroy]
     end
     resources :tags, only: [:show, :new, :create, :edit, :update]
-    get 'users/seach', to: 'searches#search'  #検索結果
+    get '/search', to: 'searches#search'  #検索結果
   end
 
 end

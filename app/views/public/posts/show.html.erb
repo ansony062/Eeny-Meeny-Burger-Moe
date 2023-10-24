@@ -58,8 +58,13 @@
       <% end %>
     </div>
 
-    <div class="sidebar col-4">
-      <%#= render '検索バー' %>
+    <div class="sidebar col-3">
+      <h5>
+        <%= link_to new_post_path do %>
+          <i class="fa-solid fa-circle-plus"></i>NewPost!
+        <% end %>
+      </h5>
+      <%= render 'public/searches/form' %>
       <%= render 'public/tags/sidetag', tags: @tags %>
     </div>
 

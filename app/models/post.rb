@@ -47,4 +47,11 @@ class Post < ApplicationRecord
     bookmarks.find_by(user_id: user.id)
   end
 
+  def self.search_for(keyword)
+    if Post.where('name LIKE ?', '%#{keyword}%')
+    elsif Post.where('shop_name LIKE ?', '%#{keyword}%')
+    elsif Post.where('place LIKE ?', '%#{keyword}%')
+    end
+  end
+
 end
