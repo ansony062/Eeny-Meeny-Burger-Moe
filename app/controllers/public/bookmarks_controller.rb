@@ -2,7 +2,7 @@ class Public::BookmarksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @bookmarks = Bookmark.where(user_id: current_user.id).pluck(:post_id)
+    @bookmarks = current_user.bookmarks
   end
 
   def create

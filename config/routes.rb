@@ -38,11 +38,12 @@ Rails.application.routes.draw do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'
+      resources :bookmarks, only: [:index]
     end
-    resources :posts, only: [:index, :show, :create, :new, :edit, :update] do
+    resources :posts, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
-      resources :bookmarks, only: [:index, :create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
     resources :tags, only: [:show, :new, :create, :edit, :update]
     get 'users/seach', to: 'searches#search'  #検索結果

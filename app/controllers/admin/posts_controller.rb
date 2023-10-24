@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
-  
+
 
   def index
     @posts = Post.page(params[:page]).per(12)
@@ -17,7 +17,7 @@ class Admin::PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update
+    if @post.update(post_params)
       flash[:notice] = "投稿の編集に成功しました。"
       redirect_to admin_post_path
     else
