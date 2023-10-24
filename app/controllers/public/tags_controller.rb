@@ -12,7 +12,9 @@ class Public::TagsController < ApplicationController
     end
 
     def show
-      @tag = Tag.find(params[:])
+      @tag = Tag.find(params[:id])
+      @tags = Tag.all
+    
     end
 
 

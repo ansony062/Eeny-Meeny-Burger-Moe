@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
-    <h3>タグ詳細</h3>
-    <% @posts.each do |post| %>
+    <h3><%= @tag.name %>（全<%= @tag.posts.all.count %>件）</h3>
+    <% @tag.posts.each do |post| %>
       <div class="card shadow m-2">
         <div class="card-body">
           <div class="col-8">
@@ -21,6 +21,16 @@
         </div>
       </div>
     <% end %>
+
+    <div class="sidebar col-4">
+      <h4>
+        <%= link_to new_post_path do %>
+          <i class="fa-solid fa-circle-plus"></i>NewPost!
+        <% end %>
+      </h4>
+      <%#= render '検索バー' %>
+      <%= render 'public/tags/sidetag', tags: @tags %>
+    </div>
     </div>
   </div>
 </div>
