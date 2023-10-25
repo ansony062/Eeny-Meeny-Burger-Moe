@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get '/' => 'posts#index'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update]
-    resources :comments, only: [:show, :destroy]
+    resources :comments, only: [:destroy]
     resources :tags, only: [:index, :new, :edit, :update, :create, :destroy]
   end
 

@@ -1,14 +1,16 @@
-<table class="table table-borderless">
-  <tr class="text-center">
-    <th>Tag</th>
-  </tr>
-  <% tags.each do |tag| %>
+<div class="col-8 mt-3">
+  <table class="table table-borderless table-sm">
     <tr class="text-center">
-      <td>
-        <%= link_to tag_path(tag.id) do %>
-          <i class="fa-solid fa-tag"></i><%= tag.name %>
-        <% end %>
-      </td>
+      <th class="table-primary">Tag</th>
     </tr>
-  <% end %>
-</table>
+    <% tags.each do |tag| %>
+      <tr class="text-center">
+        <td>
+          <%= link_to tag_path(tag.id), class: "text-dark" do %>
+            <i class="fa-solid fa-tag"></i><%= tag.name %>(<%= tag.posts.count %>)
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>

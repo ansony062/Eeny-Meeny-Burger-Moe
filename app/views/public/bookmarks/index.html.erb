@@ -4,19 +4,19 @@
 
     <% if @bookmarks.length != 0 %>
 
-      <div class="card shadow">
+      <div class="card shadow-lg m-2">
         <div class="card-body">
           <div class="col-8">
             <% @bookmarks.each do |bookmark| %>
               <%= link_to post_path(bookmark.post) do %>
                 <%= image_tag bookmark.post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
-                <h6 class="card-title"><%= bookmark.post.name %></h6>
-                <p class="card-text">
+                <h6 class="card-title text-dark"><%= bookmark.post.name %></h6>
+                <p class="card-text text-dark">
                   <i class="fa-solid fa-shop"></i><%= bookmark.post.shop_name %><br />
                   <%= bookmark.post.body %>
                 </p>
-                <p><i class="fa-solid fa-comment"></i><%= bookmark.post.comments.count %></p>
-                <span class="text-left">
+                <p class="text-dark"><i class="fa-solid fa-comment"></i><%= bookmark.post.comments.count %></p>
+                <span class="text-dark">
                   <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= bookmark.post.favorites.count %>
                 </span>
               <% end %>

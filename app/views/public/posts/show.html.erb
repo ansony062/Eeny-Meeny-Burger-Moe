@@ -1,11 +1,22 @@
 <div class="container">
-  <div class="row">
+  <div class="row my-3">
     <h3>投稿詳細</h3>
   </div>
 
-    <div class="row ps-3">
-        <%= image_tag @post.get_image, size: "500x350", class: "post-image", style: "object-fit: cover;" %>
-    <div class="col-8 p-3">
+    <div class="row">
+
+      <div class="sidebar col-4">
+        <%= render 'public/searches/form' %>
+        <h4 class="m-3">
+          <%= link_to new_post_path, class: "text-dark" do %>
+            <i class="fa-solid fa-circle-plus"></i>NewPost!
+          <% end %>
+        </h4>
+        <%= render 'public/tags/sidetag', tags: @tags %>
+      </div>
+
+    <div class="col-7 p-3">
+      <%= image_tag @post.get_image, size: "500x350", class: "post-image", style: "object-fit: cover;" %>
       <table class="table table-borderless">
         <tr>
           <td>商品名（タイトル）：<%= @post.name %></td>
@@ -22,10 +33,9 @@
           <td>感想・レビュー：<%= @post.body %></td>
         </tr>
         <tr>
-          <td>タグ：</td>
-          <td>
+          <td>タグ：
             <% @post_tags.each do |tag| %>
-              <%= link_to tag_path(tag_id: tag.id) do %>
+              <%= link_to tag_path(tag_id: tag.id), class: "text-dark" do %>
                 <i class="fa-solid fa-tag"></i><%= tag.name %>
               <% end %>
             <% end %>
@@ -33,7 +43,7 @@
         </tr>
         <tr>
           <td>
-            <%= link_to user_path(@post.user_id) do %>
+            <%= link_to user_path(@post.user_id), class: "text-dark" do %>
               <%= image_tag @post.user.get_profile_image(50, 50), class: "rounded-circle" %>
               <%= @post.user.nickname %>
             <% end %>
@@ -41,31 +51,27 @@
         </tr>
       </table>
       <% if user_signed_in? %>
-        <div id="post_<%= @post.id %>">
-          <ul class="navbar", style="list-style: none;">
+        <div id="post_<%= @post.id %>", class="mx-3">
+          <div class="d-flex justify-content-end mx-3">
+            <span class="mx-3">
+              <p class="favorite-love"><%= render 'public/favorites/love', post: @post %></p>
+            </span>
+            <span class="mx-3">
+              <p class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></p>
+            </span>
             <% if @post.user == current_user %>
-              <li><%= link_to "編集する", edit_post_path, class: "btn btn-success" %></li>
-              <li><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger" %></li>
+              <p class="ml-5"><%= link_to "編集する", edit_post_path, class: "btn btn-success btn-sm" %></p>
+              <p class="mx-3"><%= link_to "削除する", @post, mothod: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger btn-sm" %></p>
             <% end %>
-            <li class="favorite-love"><%= render 'public/favorites/love', post: @post %></li>
-            <li class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></li>
-          </ul>
+          </div>
+          </div>
+        <div class="my-2">
+          <div class="comment-index">
+            <%= render 'public/comments/index', post: @post %>
+          </div>
+          <%= render 'public/comments/form', post: @post, comment: @comment %>
         </div>
-        <div class="comment-index">
-          <%= render 'public/comments/index', post: @post %>
-        </div>
-        <%= render 'public/comments/form', post: @post, comment: @comment %>
       <% end %>
-    </div>
-
-    <div class="sidebar col-3">
-      <h5>
-        <%= link_to new_post_path do %>
-          <i class="fa-solid fa-circle-plus"></i>NewPost!
-        <% end %>
-      </h5>
-      <%= render 'public/searches/form' %>
-      <%= render 'public/tags/sidetag', tags: @tags %>
     </div>
 
   </div>

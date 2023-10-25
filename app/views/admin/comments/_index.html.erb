@@ -1,7 +1,7 @@
-<table class="m-3">
+<table>
   <tbody>
     <% post.comments.each do |comment| %>
-      <tr class="m-3">
+      <tr>
         <td>
           <%= link_to user_path(comment.user) do %>
             <%= image_tag comment.user.get_profile_image(50, 50), class: "rounded-circle" %>
@@ -10,9 +10,7 @@
         </td>
         <td><%= comment.post_comment %></td>
         <td>
-          <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-danger btn-sm", remote: true %>
-          <% end %>
+          <%= link_to "削除", admin_comment_path(post, comment), method: :delete, class: "btn btn-danger" %>
         </td>
       </tr>
     <% end %>
