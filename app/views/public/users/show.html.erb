@@ -16,7 +16,9 @@
         <tr>
           <th>フォロー数：<%= link_to @user.followings.count, user_followings_path(@user) %></th>
           <th>フォロワー数：<%= link_to @user.followers.count, user_followers_path(@user) %></th>
-          <th><%= render 'public/relationships/btn', user: @user %></th>
+          <% if user_signed_in? %>
+            <th><%= render 'public/relationships/btn', user: @user %></th>
+          <% end %>
         </tr>
       </table>
     </div>

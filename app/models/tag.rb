@@ -4,8 +4,7 @@ class Tag < ApplicationRecord
   has_many :posts, through: :post_tags
 
   def self.search_for(keyword)
-    if Tag.where('name LIKE ?', '%#{keyword}%')
-    end
+    Tag.where("name LIKE ?", "%#{keyword}%")
   end
 
 end

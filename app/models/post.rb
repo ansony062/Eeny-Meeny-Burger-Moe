@@ -48,10 +48,7 @@ class Post < ApplicationRecord
   end
 
   def self.search_for(keyword)
-    if Post.where('name LIKE ?', '%#{keyword}%')
-    elsif Post.where('shop_name LIKE ?', '%#{keyword}%')
-    elsif Post.where('place LIKE ?', '%#{keyword}%')
-    end
+    Post.where("name LIKE ?", "%#{keyword}%").or( Post.where("shop_name LIKE ?", "%#{keyword}%")).or(Post.where("place LIKE ?", "%#{keyword}%"))
   end
 
 end

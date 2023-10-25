@@ -1,7 +1,7 @@
-<% if @keyword == 'user' %>
+<% if @model == 'user' %>
   <%= render 'public/users/index', users: @records %>
-<% elsif @keyword == 'post' %>
-  <%= render '', posts: @records %>
-<% elsif @keyword == 'tag' %>
-  <%= render '', tags: @records %>
+<% elsif @model == 'post' %>
+  <%= render 'public/posts/index', posts: @records %>
+<% elsif @model == 'tag' %>
+  <%= render 'public/tags/index', tag: @records %>
 <% end %>
