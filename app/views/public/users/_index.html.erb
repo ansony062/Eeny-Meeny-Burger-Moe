@@ -14,7 +14,7 @@
         <% if user_signed_in? %>
           <td><%= render 'public/relationships/btn', user: user, options: {class: "follow-link"} %></td>
         <% end %>
-        <td><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary" %></td>
+        <td><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary btn-sm" %></td>
       </tr>
     <% end %>
   </tbody>

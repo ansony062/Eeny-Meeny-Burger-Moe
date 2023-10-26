@@ -1,19 +1,25 @@
-<% posts.each do |post| %>
+<div class="container">
+  <div class="row">
+    <% posts.each do |post| %>
       <div class="card shadow m-2">
-        <div class="card-body">
-          <div class="col-8">
-            <%= link_to post_path(post.id) do %>
-              <%= image_tag post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
-              <h6 class="card-title"><%= post.name %></h6>
-              <p class="card-text">
+        <%= link_to post_path(post.id) do %>
+          <%= image_tag post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
+          <div class="card-body">
+            <div class="col-8">
+              <p class="card-title text-dark"><%= post.name %></p>
+              <p class="card-text text-dark">
                 <i class="fa-solid fa-shop"></i><%= post.shop_name %>
               </p>
-              <p><i class="fa-solid fa-comment"></i><%= post.comments.count %></p>
-              <span class="text-left">
-                <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
-              </span>
-            <% end %>
+              <p class="d-flex justify-content-end">
+                <span class="text-dark"><i class="fa-solid fa-comment"></i><%= post.comments.count %></span>
+                <span class="text-dark">
+                  <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
+                </span>
+              </p>
+            </div>
           </div>
-        </div>
+        <% end %>
       </div>
     <% end %>
+  </div>
+</div>

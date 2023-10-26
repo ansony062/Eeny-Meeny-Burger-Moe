@@ -1,8 +1,8 @@
 <div class="container">
-  <h3 class="my-3"><%= @user.nickname %>さんの投稿ページ</h3>
+  <h3><%= @user.nickname %>さんの投稿ページ</h3>
   <div class="row">
 
-    <div class="col-5 mx-auto">
+    <div class="col-5 mx-auto my-3">
       <table class="table">
         <tr class="text-center">
           <th><%= image_tag @user.get_profile_image(200, 200), class: "rounded-circle" %></th>

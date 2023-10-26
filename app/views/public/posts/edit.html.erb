@@ -1,7 +1,7 @@
 <div class="container">
+  <h3>投稿編集</h3>
   <div class="row">
-    <h3>投稿編集</h3>
-    <div class="col-8">
+    <div class="col-8 mx-auto my-3">
       <%= render 'layouts/errors', obj: @post %>
       <%= form_with model: @post, url: post_path do |f| %>
         <table class="table table-borderless">
@@ -38,7 +38,7 @@
 
           <tr>
             <td></td>
-            <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-primary btn-sm" %></td>
           </tr>
 
         </table>
