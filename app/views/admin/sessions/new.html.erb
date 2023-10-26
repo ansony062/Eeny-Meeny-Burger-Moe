@@ -1,25 +1,28 @@
 <div class="container">
+  <h3>管理者ログイン</h3>
   <div class="row">
-    <h3>管理者ログイン</h3>
     <%= render 'layouts/errors', obj: @admin %>
-    
-    <div class="col-8">
+
+    <div class="col-6 mx-auto my-3">
       <%= form_with model: @admin, url: admin_session_path do |f| %>
         <table class="table table-borderless">
           <tr class="field">
             <td><%= f.label :email, "メールアドレス" %></td>
-            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "40px" %></td>
+            <td><%= f.email_field :email, autofocus: true, autocomplete: "email", size: "30px" %></td>
           </tr>
 
           <tr class="field">
             <td><%= f.label :password, "パスワード" %></td>
-            <td><%= f.password_field :password, autocomplete: "current-password", size: "40px" %></td>
+            <td><%= f.password_field :password, autocomplete: "current-password", size: "30px" %></td>
+          </tr>
+
+          <tr class="actions">
+            <td></td>
+            <td><%= f.submit "ログイン", class: "btn btn-primary btn-sm my-2" %></td>
           </tr>
         </table>
 
-        <div class="actions">
-          <%= f.submit "ログイン", class: "btn btn-primary" %>
-        </div>
+
       <% end %>
     </div>
   </div>

@@ -1,7 +1,7 @@
 <div class="container">
+  <h2>新規会員登録</h2>
   <div class="row">
-    <div class="col-8">
-      <h2>新規会員登録</h2>
+    <div class="col-8 mx-auto my-3">
 
       <%= form_with model: @user, url: user_registration_path do |f| %>
         <%= render "public/shared/error_messages", resource: resource %>
@@ -46,11 +46,12 @@
             <td><%= f.label :password_confirmation %></td>
             <td>&emsp;&emsp;<%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
           </tr>
-        </table>
 
-        <div class="actions">
-          <%= f.submit "新規登録", class: "btn btn-primary center-align" %>
-        </div>
+          <tr class="actions">
+            <td></td>
+            <td><%= f.submit "新規登録", class: "btn btn-primary btn-sm" %></td>
+          </tr>
+        </table>
       <% end %>
 
       <div>
