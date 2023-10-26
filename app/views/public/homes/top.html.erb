@@ -1,7 +1,7 @@
 <main>
   <div class="container mx-auto">
-      <div class="row">
-          <div class="col-10 mx-auto text-center">
+      <div class="row m-2">
+          <div class="col-10 mx-auto my-5 text-center">
               <h1>\ ようこそ！Eeny Meeny Burger Moe へ /</h1>
               <p>
                 このサイトはハンバーガーのレビューサイトになります。<br />
@@ -25,25 +25,27 @@
 
         <% @posts.each do |post| %>
           <div class="card shadow-lg m-2">
-            <div class="card-body">
-              <div class="col-8">
-                <%= link_to post_path(post.id) do %>
-                  <%= image_tag post.get_image, size: "200x150", class: "card-img-top", style: "object-fit: cover;" %>
-                  <h6 class="card-title text-dark"><%= post.name %></h6>
+            <%= link_to post_path(post.id) do %>
+              <%= image_tag post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
+              <div class="card-body">
+                <div class="col-8">
+                  <p class="card-title text-dark"><%= post.name %></p>
                   <p class="card-text text-dark">
                     <i class="fa-solid fa-shop"></i><%= post.shop_name %>
                   </p>
-                  <p class="text-dark"><i class="fa-solid fa-comment"></i><%= post.comments.count %></p>
-                  <span class="text-dark">
-                    <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
-                  </span>
-                <% end %>
+                  <p class="d-flex justify-content-end">
+                    <span class="text-dark"><i class="fa-solid fa-comment"></i><%= post.comments.count %></span>
+                    <span class="text-dark">
+                      <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
+                    </span>
+                  </p>
               </div>
             </div>
+            <% end %>
           </div>
         <% end %>
          <div>
-          <%= link_to ">> さらに表示する", posts_path, class: "text-dark align-post-end" %>
+          <%= link_to ">> さらに表示する", posts_path, class: "d-flex align-items-end text-dark" %>
         </div>
 
       </div>

@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="row">
-    <h3>登録情報</h3>
-    <div class="col-5">
-      <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary" %>
+  <h3>登録情報</h3>
+  <div class="row mx-auto">
+    <div class="col-5 mx-auto">
+      <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary btn-sm m-2" %>
       <div>
         <p><%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle" %></p>
         <table class="table table-borderless">
@@ -28,16 +28,14 @@
         </table>
       </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="co-4 m-2">
+    <div class="co-4 my-auto">
       <h4><i class="fa-regular fa-user"></i>投稿マイページ</h4>
-      <%= link_to "自分の投稿を見る", user_path(@user.id), class: "btn btn-primary" %>
-    </div>
-    <div class="col-4">
+      <%= link_to "自分の投稿を見る", user_path(@user.id), class: "btn btn-primary btn-sm m-3" %>
+
       <h4><i class="fa-solid fa-bookmark"></i>ブックマーク</h4>
-      <%= link_to "ブックマーク一覧を見る", user_bookmarks_path(@user.id), class: "btn btn-primary" %>
+      <%= link_to "ブックマーク一覧を見る", user_bookmarks_path(@user.id), class: "btn btn-primary btn-sm m-3" %>
     </div>
+
   </div>
 </div>

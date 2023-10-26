@@ -1,13 +1,12 @@
 <div class="container">
+  <h3>タグ編集</h3>
   <div class="row">
-    <h3>タグ編集</h3>
-    <div class="col-8">
+    <div class="col-8 mx-auto">
       <%= render 'layouts/errors', obj: @tag %>
       <%= form_with model: @tag, url: admin_tag_path do |f| %>
         <%= f.label :タグ名 %>
         <%= f.text_field :name %>
-        <%= f.submit "変更を保存", class: "btn btn-primary" %>
-        <%#= link_to "削除", admin_tags_destroy_path, method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger" %>
+        <%= f.submit "変更を保存", class: "btn btn-primary btn-sm m-2" %>
       <% end %>
     </div>
   </div>

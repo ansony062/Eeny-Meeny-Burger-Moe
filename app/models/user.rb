@@ -17,6 +17,11 @@ class User < ApplicationRecord
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy              #フォローしている関連付け
   has_many :followings, through: :relationships, source: :followed                                                  #フォローしているユーザーを取得
 
+  validates :last_name, presence: true
+  validates :first_name, presence: true
+  validates :last_name_kana, presence: true
+  validates :first_name_kana, presence: true
+  validates :nickname, presence: true
 
   def full_name
     last_name + ' ' + first_name

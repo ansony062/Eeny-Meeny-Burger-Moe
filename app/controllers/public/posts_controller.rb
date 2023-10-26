@@ -9,7 +9,6 @@ class Public::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @tags = Tag.all
-    @tag_list = @post.tags.pluck(:name).join('、')
     @post_tags = @post.tags
     @comment = Comment.new
   end
