@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
-  
+
 
   def index
     @posts = Post.page(params[:page]).per(12)
@@ -8,16 +8,19 @@ class Admin::PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @tags = Tag.all
+    @post_tags = @post.tags
   end
 
   def edit
     @post = Post.find(params[:id])
+    @tag_list = @post.tags.pluck(:name).join('、')
   end
 
   def update
     @post = Post.find(params[:id])
-    if @post.update
+    @tag_list = params[:post][:tags_name].split('、')
+    if @post.update(post_params)
+       @post.save_tags(@tag_list)
       flash[:notice] = "投稿の編集に成功しました。"
       redirect_to admin_post_path
     else

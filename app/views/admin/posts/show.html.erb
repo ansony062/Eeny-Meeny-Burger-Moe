@@ -1,12 +1,8 @@
 <div class="container">
+  <h3>投稿詳細</h3>
   <div class="row">
-    <h3>投稿詳細</h3>
-    <div class="col-8">
-      <div class="card-img-top">
-        <%= image_tag @post.get_image, size: "400x350", class: "card-img-top", style: "object-fit: cover;" %>
-      </div>
-    </div>
-    <div class="col-8">
+    <div class="col-8 mx-auto">
+      <%= image_tag @post.get_image, size: "500x400", class: "card-img-top", style: "object-fit: cover;" %>
       <table class="table table-borderless">
         <tr>
           <td>商品名（タイトル）</td>
@@ -34,21 +30,24 @@
         </tr>
 
         <tr>
-          <td>公開設定</td>
+          <td>タグ</td>
           <td>
-            <% if @post.is_active %>
-              <span class="text-success">公開</span>
-            <% else %>
-              <span class="text-secondary">非公開</span>
+            <% @post_tags.each do |tag| %>
+              <%= link_to tag_path(tag_id: tag.id), class: "text-dark" do %>
+                <i class="fa-solid fa-tag"></i><%= tag.name %>
+              <% end %>
             <% end %>
           </td>
         </tr>
-
         <tr>
           <td></td>
-          <td><%= link_to "編集する", edit_admin_post_path(@post), class: "btn" %></td>
+          <td><%= link_to "編集する", edit_admin_post_path(@post), class: "btn btn-primary btn-sm" %></td>
         </tr>
       </table>
+
+      <!--<div>-->
+      <!--  <%#= render 'admin/comments/index', post: @post %>-->
+      <!--</div>-->
     </div>
   </div>
 </div>

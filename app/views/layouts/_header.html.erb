@@ -8,7 +8,7 @@
 
         <!--userログイン時、ようこそ○○さん！-->
         <% if user_signed_in? %>
-          <div class="log-in-message">ようこそ、<%= current_user.nickname %>さん！</div>
+          <div class="log-in-message text-light">ようこそ、<%= current_user.nickname %>さん！</div>
         <% else %>
 
         <% end %>
@@ -24,19 +24,19 @@
             <% if user_signed_in? %>
             <!--userログイン時-->
               <li>
-                <%= link_to users_mypage_path, class: 'nav-link text-dark' do %>
+                <%= link_to user_path(current_user.id), class: 'nav-link text-light' do %>
                  <i class="fa-solid fa-user"></i>My page
                 <% end %>
               </li>
 
               <li>
-                <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                <%= link_to posts_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-camera"></i>Posts
                 <% end %>
                 </li>
 
               <li>
-                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <%= link_to destroy_user_session_path, method: :delete, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-right-from-bracket"></i>Log Out
                 <% end %>
               </li>
@@ -44,25 +44,25 @@
             <% elsif admin_signed_in? %>
             <!--adminログイン時-->
               <li>
-                <%= link_to admin_posts_path, class: 'nav-link text-dark' do %>
+                <%= link_to admin_posts_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-camera"></i>Posts
                 <% end %>
               </li>
 
               <li>
-                <%= link_to admin_users_path, class: 'nav-link text-dark' do %>
+                <%= link_to admin_users_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-users"></i>Users
                 <% end %>
               </li>
 
               <li>
-                <%= link_to admin_tags_path, class: 'nav-link text-dark' do %>
+                <%= link_to admin_tags_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-tags"></i>Tags
                 <% end %>
               </li>
 
               <li>
-                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' do %>
+                <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-right-from-bracket"></i>Sign Out
                 <% end %>
               </li>
@@ -70,25 +70,25 @@
             <% else %>
             <!--未ログイン時-->
               <li>
-                <%= link_to posts_path, class: 'nav-link text-dark' do %>
+                <%= link_to posts_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-camera"></i>Posts
                 <% end %>
               </li>
 
               <li>
-                <%= link_to new_user_registration_path, class: 'nav-link text-dark' do %>
+                <%= link_to new_user_registration_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-user-plus"></i>Sign Up
                 <% end %>
               </li>
 
               <li>
-                <%= link_to new_user_session_path, class: 'nav-link text-dark' do %>
+                <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-right-to-bracket"></i>Log In
                 <% end %>
               </li>
 
               <li>
-                <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-dark' do %>
+                <%= link_to users_guest_sign_in_path, method: :post, class: 'nav-link text-light' do %>
                   <i class="fa-solid fa-user-group"></i>Guest Log In
                 <% end %>
               </li>

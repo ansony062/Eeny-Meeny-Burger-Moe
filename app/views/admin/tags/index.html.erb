@@ -1,12 +1,12 @@
 <div class="container">
+  <h3>タグ一覧・追加</h3>
   <div class="row">
-    <h3>タグ一覧・追加</h3>
-    <div class="col-8">
+    <div class="col-8 mx-auto my-5">
       <%= render 'layouts/errors', obj: @tag %>
       <%= render 'new', tag: @tag %>
     </div>
 
-    <div class="col-8">
+    <div class="col-5 mx-auto">
       <table class="table table-hover">
         <thread>
           <tr>
@@ -18,7 +18,7 @@
           <% @tags.each do |tag| %>
             <tr>
               <td><%= tag.name %></td>
-              <td><%= link_to "編集する", edit_admin_tag_path(tag), class: "btn btn-primary" %></td>
+              <td><%= link_to "編集する", edit_admin_tag_path(tag), class: "btn btn-primary btn-sm" %></td>
             <tr>
           <% end %>
         </tbody>

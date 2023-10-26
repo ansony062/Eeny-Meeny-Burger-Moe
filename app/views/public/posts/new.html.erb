@@ -1,0 +1,79 @@
+<div class="container">
+  <div class="row">
+    <h4>新規投稿フォーム</h4>
+    <div class="col-8">
+      <%= render 'layouts/errors', obj: @post %>
+      <%= form_with model: @post, url: posts_path do |f| %>
+        <table class="table table-borderless">
+
+          <tr>
+            <td>画像</td>
+            <td><%= f.file_field :image, accept: "image/*" %></td>
+          </tr>
+
+          <tr>
+            <td>商品名（タイトル）</td>
+            <td><%= f.text_field :name, :placeholder => "〇〇バーガー" %></td>
+          </tr>
+
+          <tr>
+            <td>店舗名</td>
+            <td><%= f.text_field :shop_name, :placeholder => "〇〇バーガーショップ" %></td>
+          </tr>
+
+          <tr>
+            <td>場所</td>
+            <td><%= f.text_field :place, :placeholder => "最寄り駅〇〇駅" %></td>
+          </tr>
+
+          <tr>
+            <td>オススメ度</td>
+            <td>
+              <% if @post.id.nil? %>
+                <div id="review">
+                  <%= f.hidden_field :review %>
+                  <div id="post_raty"></div>
+                </div>
+                <script>
+                  $(document).on('turbolinks:load', function(){
+                    let elem = document.querySelector('#post_raty');
+                    if (elem == null) return;
+
+                    elem,innerHTML = ""
+                    let opt = {
+                      starOn: "<%= asset_path('star-on.png') %>",
+                      starOff: "<%= asset_path('star-off.png') %>",
+                      starHalf: "<%= asset_path('star-half.png') %>",
+                      scoreName: 'post[review]',
+                    };
+                    raty(elem, opt);
+                  });
+                </script>
+              <% else %>
+                <div>
+                  <%= render 'startic', post: @post %>
+                </div>
+              <% end %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>感想・レビュー</td>
+            <td><%= f.text_area :body, :placeholder => "ここに感想・レビューを記入してください。", size: "45px" %></td>
+          </tr>
+
+          <tr>
+            <td>タグ（、で区切ると複数のタグを登録できます）</td>
+            <td><%= f.text_field :tags_name, value: @tag_list, :placeholder => "チーズ、アボカド", class: 'form_control' %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit '新規投稿', class: "btn btn-primary" %></td>
+          </tr>
+        </table>
+
+      <% end %>
+    </div>
+  </div>
+</div>

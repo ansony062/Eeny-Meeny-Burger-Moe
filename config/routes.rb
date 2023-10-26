@@ -22,30 +22,31 @@ Rails.application.routes.draw do
     get '/' => 'posts#index'
     resources :users, only: [:index, :show, :edit, :update]
     resources :posts, only: [:index, :show, :edit, :update]
-    resources :comments, only: [:show, :destroy]
+    resources :comments, only: [:destroy]
     resources :tags, only: [:index, :new, :edit, :update, :create, :destroy]
   end
 
   #顧客
   scope module: :public do
     root to: 'homes#top'
-    get 'users/mypage' => 'users#show'
+    get 'users/mypage' => 'users#mypage'
     get 'users/information/edit' => 'users#edit'
     patch 'users/information' => 'users#update'
     get 'users/confirm' => 'users#confirm'         #退会確認画面
     patch 'users/withdrawal' => 'users#withdrawal' #退会処理更新
-    resources :users, only: [:edit, :update] do
+    resources :users, only: [:show, :edit, :update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
-      get 'followers' => 'reltionships#followers', as: 'followers'
+      get 'followers' => 'relationships#followers', as: 'followers'
+      resources :bookmarks, only: [:index]
     end
-    resources :posts, only: [:index, :show, :new, :edit, :update] do
+    resources :posts, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
-      resources :bookmarks, only: [:index, :create, :destroy]
+      resource :bookmarks, only: [:create, :destroy]
     end
-    resources :tags, only: [:index]
-    get 'users/seach', to: 'searches#search'  #検索結果
+    resources :tags, only: [:show, :new, :create, :edit, :update]
+    get '/search', to: 'searches#search'  #検索結果
   end
 
 end

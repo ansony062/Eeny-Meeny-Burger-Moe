@@ -46,7 +46,7 @@ class Public::SessionsController < Devise::SessionsController
   def reject_user
     @end_user = User.find_by(email: params[:user][:email]) #ログインした時のアドレスのユーザーが存在しているか探す
     if @end_user
-      if @end_user.valid_password?(params[:email][:password]) && (@end_user.is_active == false) #入力されたパスワードが一致しているか
+      if @end_user.valid_password?(params[:user][:password]) && (@end_user.is_active == false) #入力されたパスワードが一致しているか
         flash[:notice] = "退会済みです。サイドご登録をしてご利用してください"
         redirect_to new_user_registration_path
       end

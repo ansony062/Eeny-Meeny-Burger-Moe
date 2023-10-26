@@ -1,7 +1,11 @@
 class Public::UsersController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:show]
 
   def show
+    @user = User.find(params[:id])
+  end
+
+  def mypage
     @user = current_user
   end
 
@@ -13,7 +17,7 @@ class Public::UsersController < ApplicationController
     @user = current_user
     if @user.update(user_params)
       flash[:notice] = "会員情報を変更しました。"
-      redirect_to users_mypage_path
+      redirect_to user_path
     else
       flash.now[:notice] = "会員情報の変更できませんでした。"
       render 'edit'
@@ -35,7 +39,7 @@ class Public::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:image, :last_name, :first_name, :last_name_kana, :first_name, :nickname, :email)
+    params.require(:user).permit(:profile_image, :last_name, :first_name, :last_name_kana, :first_name, :nickname, :email)
   end
 
 end

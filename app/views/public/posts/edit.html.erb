@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <h3>投稿編集</h3>
+    <div class="col-8">
+      <%= render 'layouts/errors', obj: @post %>
+      <%= form_with model: @post, url: post_path do |f| %>
+        <table class="table table-borderless">
+
+          <tr>
+            <td>商品名（タイトル）</td>
+            <td><%= f.text_field :name %></td>
+          </tr>
+
+          <tr>
+            <td>店舗名</td>
+            <td><%= f.text_field :shop_name %></td>
+          </tr>
+
+          <tr>
+            <td>場所</td>
+            <td><%= f.text_field :place %></td>
+          </tr>
+
+          <tr>
+            <td>オススメ度</td>
+            <td><%= render 'startic', post: @post %></td>
+          </tr>
+
+          <tr>
+            <td>感想・レビュー</td>
+            <td><%= f.text_field :body %></td>
+          </tr>
+
+          <tr>
+            <td>タグ</td>
+            <td><%= f.text_field :name, value: @tag_list, class: 'form_control' %></td>
+          </tr>
+
+          <tr>
+            <td></td>
+            <td><%= f.submit "変更を保存", class: "btn btn-primary" %></td>
+          </tr>
+
+        </table>
+      <% end %>
+    </div>
+  </div>
+</div>
