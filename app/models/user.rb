@@ -33,7 +33,7 @@ class User < ApplicationRecord
 
 
   def self.guest
-    find_or_create_by!(email: 'guest@example.com') do |user| #指定した条件で探して、存在すればそのデータを返し、存在しなければ新しいデータを作成する
+    find_or_create_by!(email: 'guest@example.com') do |user| #指定した条件で探して、存在すればそのデータを返し、存在しなければ新しいデータを作成
       user.password = SecureRandom.urlsafe_base64
       user.last_name = "ゲスト"
       user.first_name = "太郎"
