@@ -15,13 +15,13 @@ class Public::PostsController < ApplicationController
 
   def new
     @post = Post.new
-    @tag_list = @post.tags.pluck(:name).join(',')
+    @tag_list = @post.tags.pluck(:name).join('、')
   end
 
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
-    @tag_list = params[:post][:tags_name].split(',') #文字列を取得、コンマで分割して格納
+    @tag_list = params[:post][:tags_name].split('、') #文字列を取得、コンマで分割して格納
 
     if @post.save
       @post.save_tags(@tag_list)
@@ -35,12 +35,12 @@ class Public::PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @tag_list = params[:post][:tags_name].split(',')
+    @tag_list = @post.tags.pluck(:name).split('、')
   end
 
   def update
     @post = Post.find(params[:id])
-    @tag_list = params[:post][:tags_name].split(',')
+    @tag_list = params[:post][:tags_name].split('、')
     if @post.update(post_params)
        @post.save_tags(@tag_list)
       flash[:notice] = "投稿の編集に成功しました。"
@@ -54,7 +54,6 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    flash[:notice] = "投稿を削除しました。"
     redirect_to posts_path
   end
 
