@@ -17,7 +17,7 @@ class Public::SearchesController < ApplicationController
         @post = Post.where(id: @mapost)           #タグのついた投稿のidをすべて取得
         @records = @post.to_a                     #投稿を取得
       else
-      @redords = []                               #@tagが存在しない場合
+        @records = []                               #@tagが存在しない場合
       end
     end
   end
