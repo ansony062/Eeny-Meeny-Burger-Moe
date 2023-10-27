@@ -12,15 +12,17 @@
 入店するきっかけにできればと思ったからです。
 ​
 ### ターゲットユーザー
-・学生はもちろん、ランチやディナーのお店探しをしている人  
+・学生はもちろん、ランチやディナーのお店探しをしている人
 ・気になっているハンバーガーやお店があるが、ためらっている人
 ​
 ### 主な利用シーン
-・気になるハンバーガー店や食べたいハンバーガーがあるとき  
+・気になるハンバーガー店や食べたいハンバーガーがあるとき
 ・食べた感想を人に共有したいとき
 ​
 ## 設計書
-後ほど作成予定
+・ER図(https://drive.google.com/file/d/1GuFlmREKMuBDo0DLGil5paD2XhTpm_7g/view?usp=sharing)
+・遷移図(https://drive.google.com/file/d/1wwmL9FSi6W3eU2vCYKtS_Es5tektR0GD/view?usp=sharing)
+・テーブル定義書(https://docs.google.com/spreadsheets/d/1rMVlqTvSULy6ygBG8WnyAXX6NoLPEmkz/edit?usp=sharing&ouid=100127892435817770692&rtpof=true&sd=true)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
@@ -30,4 +32,5 @@
 - IDE：Cloud9
 ​
 ## 使用素材
-使用した際に記述予定
+・ロゴ作成使用サイト：canva(https://www.canva.com/ja_jp/create/logos/)
+・無料写真資材サイト(https://o-dan.net/ja/)
