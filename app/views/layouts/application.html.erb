@@ -16,10 +16,14 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <div class="container">
+      <p><%= render 'public/searches/form' %></p>
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
 
-    <%= yield %>
+
+      <%= yield %>
+    </div>
     <%= render 'layouts/footer' %>
   </body>
 </html>

@@ -2,10 +2,14 @@
   <h3>登録情報</h3>
   <div class="row mx-auto">
     <div class="col-5 mx-auto">
-      <%= link_to "編集する", users_information_edit_path, class: "btn btn-primary btn-sm m-2" %>
       <div>
-        <p><%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle" %></p>
         <table class="table table-borderless">
+
+          <tr>
+            <td><%= image_tag @user.get_profile_image(100, 100), class: "rounded-circle" %></td>
+            <td></td>
+          </tr>
+
           <tr>
             <td>名前</td>
             <td><%= @user.full_name %></td>
@@ -25,15 +29,21 @@
             <td>メールアドレス</td>
             <td><%= @user.email %></td>
           </tr>
+
+          <tr>
+            <td></td>
+            <td><%= link_to "編集する", users_information_edit_path, class: "btn btn-primary btn-sm mt-4 mx-4" %></td>
+          </tr>
+
         </table>
       </div>
     </div>
 
     <div class="co-4 my-auto">
-      <h4><i class="fa-regular fa-user"></i>投稿マイページ</h4>
+      <h4><i class="fa-solid fa-user"></i>&emsp;投稿マイページ</h4>
       <%= link_to "自分の投稿を見る", user_path(@user.id), class: "btn btn-primary btn-sm m-3" %>
 
-      <h4><i class="fa-solid fa-bookmark"></i>ブックマーク</h4>
+      <h4><i class="fa-solid fa-bookmark"></i>&emsp;ブックマーク</h4>
       <%= link_to "ブックマーク一覧を見る", user_bookmarks_path(@user.id), class: "btn btn-primary btn-sm m-3" %>
     </div>
 

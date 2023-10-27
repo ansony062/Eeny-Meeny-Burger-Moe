@@ -1,6 +1,7 @@
 <div class="container">
   <h3>"<%= @keyword %>" の検索結果</h3>
   <div class="row">
+
 <% if @model == 'user' %>
   <%= render 'public/users/index', users: @records %>
 <% elsif @model == 'post' %>

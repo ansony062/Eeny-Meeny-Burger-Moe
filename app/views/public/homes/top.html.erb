@@ -2,8 +2,8 @@
   <div class="container mx-auto">
       <div class="row m-2">
           <div class="col-10 mx-auto my-5 text-center">
-              <h1>\ ようこそ！Eeny Meeny Burger Moe へ /</h1>
-              <p>
+              <h1>\&emsp;<strong>ようこそ！Eeny Meeny Burger Moe&emsp;へ</strong>&emsp;/</h1>
+              <p class="my-4">
                 このサイトはハンバーガーのレビューサイトになります。<br />
                 気になるハンバーガーを見つけたり、食べたハンバーガーの感想を共有したり<br />
                 楽しんでいってください！！
@@ -14,7 +14,6 @@
       <div class ="row mx-auto">
 
         <div class="sidebar col-4">
-          <%= render 'public/searches/form' %>
           <h4 class="m-3">
             <%= link_to new_post_path, class: "text-dark" do %>
               <i class="fa-solid fa-circle-plus"></i>NewPost!
@@ -26,8 +25,8 @@
         <% @posts.each do |post| %>
           <div class="card shadow-lg m-2">
             <%= link_to post_path(post.id) do %>
-              <%= image_tag post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
               <div class="card-body">
+                <%= image_tag post.get_image, size: "250x200", class: "card-img-top", style: "object-fit: cover;" %>
                 <div class="col-8">
                   <p class="card-title text-dark"><%= post.name %></p>
                   <p class="card-text text-dark">
