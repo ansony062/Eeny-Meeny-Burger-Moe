@@ -12,6 +12,7 @@ class Admin::TagsController < ApplicationController
       flash[:notice] = "タグの登録に成功しました。"
       redirect_to request.referer
     else
+      @tags = Tag.all
       flash.now[:notice] = "タグの登録に失敗しました。"
       render 'index'
     end
@@ -27,7 +28,7 @@ class Admin::TagsController < ApplicationController
       flash[:notice] = "タグの編集に成功しました。"
       redirect_to admin_tags_path
     else
-      @tag = Tag.all
+      @tags = Tag.all
       flash.now[:notice] = "タグの編集に失敗しました。"
       render 'edit'
     end
