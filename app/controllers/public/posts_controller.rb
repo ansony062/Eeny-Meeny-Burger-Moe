@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @posts = Post.page(params[:page]).per(12)
+    @posts = Post.order("created_at DESC").page(params[:page]).per(12)
     @tags = Tag.all
   end
 
