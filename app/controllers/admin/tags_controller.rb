@@ -12,7 +12,7 @@ class Admin::TagsController < ApplicationController
       flash[:notice] = "タグの登録に成功しました。"
       redirect_to request.referer
     else
-      @tags = Tag.all
+      @tags = Tag.page(params[:page]).per(7)
       flash.now[:notice] = "タグの登録に失敗しました。"
       render 'index'
     end
