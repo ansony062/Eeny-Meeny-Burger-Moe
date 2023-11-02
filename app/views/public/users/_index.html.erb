@@ -1,4 +1,4 @@
-<div class="col-8">
+<div class="col-10">
   <table class="table mx-auto">
     <thead>
       <tr>
@@ -11,11 +11,11 @@
       <% users.each do |user| %>
         <tr>
           <td><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></td>
-          <td><%= user.nickname %></td>
+          <td class="align-middle"><%= user.nickname %></td>
           <% if user_signed_in? %>
-            <td><%= render 'public/relationships/btn', user: user, options: {class: "follow-link"} %></td>
+            <td class="align-middle"><%= render 'public/relationships/btn', user: user, options: {class: "follow-link"} %></td>
           <% end %>
-          <td><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary btn-sm" %></td>
+          <td class="align-middle"><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary btn-sm" %></td>
         </tr>
       <% end %>
     </tbody>
