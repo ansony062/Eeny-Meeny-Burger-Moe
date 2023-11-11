@@ -8,7 +8,8 @@
             <%= comment.user.nickname %>
           <% end %>
         </td>
-        <td class="mx-auto"><%= comment.post_comment %></td>
+        <td class="px-auto"><%= comment.post_comment %></td>
+        <td><i class="fa-regular fa-clock"></i><%= comment.created_at.strftime('%m/%d %H:%M') %></td>
         <td>
           <% if comment.user == current_user %>
             <%= link_to "削除", post_comment_path(post, comment), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger btn-sm", remote: true %>
