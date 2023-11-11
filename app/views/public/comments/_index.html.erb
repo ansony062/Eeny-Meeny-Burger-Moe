@@ -11,7 +11,7 @@
         <td class="mx-auto"><%= comment.post_comment %></td>
         <td>
           <% if comment.user == current_user %>
-            <%= link_to "削除", post_comment_path(post, comment), method: :delete, class: "btn btn-danger btn-sm", remote: true %>
+            <%= link_to "削除", post_comment_path(post, comment), method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger btn-sm", remote: true %>
           <% end %>
         </td>
       </tr>
