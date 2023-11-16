@@ -40,6 +40,11 @@
                           <i class= "fa-solid fa-heart" aria-hidden = "true", style = "color: red;"></i><%= post.favorites.count %>
                         </span>
                       </p>
+                      <p class="d-flex justify-content-end">
+                        <span class="text-dark">
+                          <i class="fa-regular fa-clock"></i><%= time_ago_in_words(post.created_at) %>前
+                        </span>
+                      </p>
                     </div>
                   <% end %>
                 </div>

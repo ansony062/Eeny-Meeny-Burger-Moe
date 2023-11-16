@@ -1,11 +1,31 @@
 ja:
   activerecord:
-    errors:
-      messages:
-        record_invalid: 'バリデーションに失敗しました: %{errors}'
-        restrict_dependent_destroy:
-          has_one: "%{record}が存在しているので削除できません"
-          has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      user:
+        last_name: "姓"
+        first_name: "名"
+        last_name_kana: "セイ（カナ）"
+        first_name_kana: "メイ（カナ）"
+        nickname: "ハンドルネーム"
+        email: "メールアドレス"
+        encrypted_password: "パスワード"
+      tag:
+        name: "タグ名"
+      post:
+        name: "タイトル"
+        shop_name: "ショップ名"
+        place: "場所"
+        review: "オススメ度"
+        body: "感想・レビュー"
+      comment:
+        post_comment: "コメント"
+
+      errors:
+       messages:
+          record_invalid: 'バリデーションに失敗しました: %{errors}'
+          restrict_dependent_destroy:
+            has_one: "%{record}が存在しているので削除できません"
+            has_many: "%{record}が存在しているので削除できません"
   date:
     abbr_day_names:
     - 日
@@ -16,7 +36,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -42,7 +62,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
