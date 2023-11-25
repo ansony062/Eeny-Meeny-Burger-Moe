@@ -1,5 +1,6 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create]
+  before_action :correct_user, only: [:edit, :update]
 
   def index
     @posts = Post.order("created_at DESC").page(params[:page]).per(12)
@@ -44,7 +45,7 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
        @post.save_tags(@tag_list)
       flash[:notice] = "投稿の編集に成功しました。"
-      redirect_to posts_path
+      redirect_to post_path
     else
       flash.now[:notice] = "投稿の編集に失敗しました。"
       render 'edit'
@@ -62,6 +63,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:user_id, :image, :name, :shop_name, :place, :review, :body)
+  end
+
+  def correct_user
+    @post = Post.find(params[:id])
+    @user = @post.user
+    redirect_to posts_path unless @user == current_user
   end
 
 end

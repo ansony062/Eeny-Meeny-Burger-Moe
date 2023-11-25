@@ -72,7 +72,7 @@
               <p class="bookmark-save"><%= render 'public/bookmarks/save', post: @post %></p>
             </span>
             <% if @post.user == current_user %>
-              <p class="ml-5"><%= link_to "編集する", posts_edit_path, class: "btn btn-success btn-sm" %></p>
+              <p class="ml-5"><%= link_to "編集する", edit_post_path, class: "btn btn-success btn-sm" %></p>
               <p class="mx-3"><%= link_to "削除する", post_path, method: :delete, data: { confirm: '本当に削除しますか？'}, class: "btn btn-danger btn-sm" %></p>
             <% end %>
           </div>
