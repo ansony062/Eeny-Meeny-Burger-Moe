@@ -40,7 +40,8 @@ Rails.application.routes.draw do
       get 'followers' => 'relationships#followers', as: 'followers'
       resources :bookmarks, only: [:index]
     end
-    resources :posts, only: [:index, :show, :create, :new, :edit, :update, :destroy] do
+    get 'posts/edit' => 'posts#edit'               #投稿編集
+    resources :posts, only: [:index, :show, :create, :new, :update, :destroy] do
       resource :favorites, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
       resource :bookmarks, only: [:create, :destroy]
