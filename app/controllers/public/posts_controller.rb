@@ -3,7 +3,15 @@ class Public::PostsController < ApplicationController
   before_action :correct_user, only: [:edit, :update]
 
   def index
-    @posts = Post.order("created_at DESC").page(params[:page]).per(12)
+    if params[:latest]
+      @posts = Post.latest.page(params[:page]).per(12)
+    elsif params[:old]
+      @posts = Post.old.page(params[:page]).per(12)
+    #elsif params[:most_favorited]
+      #@posts = Post.most_favorited.page(params[:page]).per(12)
+    else
+      @posts = Post.order(created_at: :desc).page(params[:page]).per(12)
+    end.to_a
     @tags = Tag.all
   end
 
