@@ -13,11 +13,11 @@
             <% end %>
           </th>
         </tr>
-        <tr class="mx-auto">
+        <tr id="btn-btn", class="mx-auto">
           <th>フォロー数：<%= link_to @user.followings.count, user_followings_path(@user) %></th>
           <th>フォロワー数：<%= link_to @user.followers.count, user_followers_path(@user) %></th>
           <% if user_signed_in? %>
-            <th><%= render 'public/relationships/btn', user: @user %></th>
+            <th class="follow-btn"><%= render 'public/relationships/btn', user: @user %></th>
           <% end %>
         </tr>
       </table>
