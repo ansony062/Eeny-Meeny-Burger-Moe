@@ -9,11 +9,11 @@
     </thead>
     <tbody>
       <% users.each do |user| %>
-        <tr>
-          <td><%= image_tag user.get_profile_image(100, 100), class: "rounded-circle" %></td>
+        <tr id="btn-btn">
+          <td><%= image_tag user.get_profile_image(50, 50), class: "rounded-circle" %></td>
           <td class="align-middle"><%= user.nickname %></td>
           <% if user_signed_in? %>
-            <td class="align-middle"><%= render 'public/relationships/btn', user: user, options: {class: "follow-link"} %></td>
+            <td class="align-middle"><%= render 'public/relationships/btn', user: user, class: "follow-btn" %></td>
           <% end %>
           <td class="align-middle"><%= link_to "投稿ページへ", user_path(user), class: "btn btn-primary btn-sm" %></td>
         </tr>

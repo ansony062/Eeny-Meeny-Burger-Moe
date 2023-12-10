@@ -5,6 +5,7 @@ class Post < ApplicationRecord
   has_many :bookmarks, dependent: :destroy
   has_many :comments,  dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 
   has_many :post_tags, dependent: :destroy
   has_many :tags, through: :post_tags
@@ -41,6 +42,12 @@ class Post < ApplicationRecord
     end
 
   end
+
+  #投稿順
+  scope :latest, -> { order(created_at: :desc) } #最新順
+  scope :old, -> { order(created_at: :asc) }     #古い順
+  scope :most_favorited, -> { includes(:favorited_users)  #いいねしたユーザー
+    .sort_by { |x| x.favorited_users.includes(:favorites).size }.reverse } #いいね順
 
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)

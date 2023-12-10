@@ -15,14 +15,14 @@
         <tbody>
           <% @posts.each do |post| %>
             <tr>
-              <td>
+              <td class="align-middle">
                 <%= link_to admin_post_path(post.id) do %>
                   <%= post.created_at.strftime('%Y/%m/%d %H:%M:%S') %>
                 <% end %>
               </td>
-              <td><%= post.user.last_name + post.user.first_name %></td>
-              <td><%= image_tag post.image, size: "100x70", style: "object-fit: cover;" %></td>
-              <td><%= post.name %></td>
+              <td class="align-middle"><%= post.user.last_name + post.user.first_name %></td>
+              <td class="align-middle"><%= image_tag post.image, size: "100x70", style: "object-fit: cover;" %></td>
+              <td class="align-middle"><%= post.name %></td>
             </tr>
           <% end %>
         </tbody>
