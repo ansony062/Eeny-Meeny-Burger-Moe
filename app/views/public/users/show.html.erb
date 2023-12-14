@@ -13,9 +13,8 @@
             <% end %>
           </th>
         </tr>
-        <tr id="btn-btn", class="mx-auto">
-          <th>フォロー数：<%= link_to @user.followings.count, user_followings_path(@user) %></th>
-          <th>フォロワー数：<%= link_to @user.followers.count, user_followers_path(@user) %></th>
+        <tr id="btn-btn">
+          <th class="follow-count"><%= render 'public/relationships/count', user: @user %></th>
           <% if user_signed_in? %>
             <th class="follow-btn"><%= render 'public/relationships/btn', user: @user %></th>
           <% end %>
